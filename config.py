@@ -1,3 +1,3 @@
-CLIENT_SECRET = "Секретный ключ из Нейросети"  # Authorization Key
+CLIENT_SECRET = "Секретный ключ из Нейросети"
 TOKEN = "Ваш Токен"
-MODEL = "Модель ИИ"  # Используем GigaChat, так как GigaChat-2 не поддерживается
+MODEL = "Модель ИИ"
