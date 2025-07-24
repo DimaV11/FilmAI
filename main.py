@@ -80,9 +80,4 @@ def handle(message):
 
 if __name__ == "__main__":
     print("Бот запущен...")
-    try:
-        bot.infinity_polling()
-    except Exception as e:
-        print(f"Ошибка при запуске бота: {e}")
-        time.sleep(10)
-        bot.infinity_polling()
+    bot.infinity_polling()
