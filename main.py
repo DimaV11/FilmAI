@@ -9,7 +9,8 @@ bot = telebot.TeleBot(TOKEN)
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 search = types.KeyboardButton("🔎 Поиск")
 help_btn = types.KeyboardButton("🆘 Помощь")
-markup.add(search, help_btn)
+info_btn = types.KeyboardButton("📄 Инфо")
+markup.add(search, help_btn, info_btn)
 
 waiting = set()
 
@@ -19,10 +20,24 @@ def start(message):
         message.chat.id,
         "🎬 Привет! Я - бот, эксперт по кино и сериалам. \n"
         "Нажми '🔎 Поиск', чтобы найти фильмы или сериалы по описанию! 🤩\n"
-        "Или выбери '🆘 Помощь' для инструкций.",
+        "Или выбери '🆘 Помощь' для инструкций. \n"
+        "Также, ты можешь нажать на '📄 Инфо', чтобы узнать больше информации о боте!🤖",
         reply_markup=markup,
         parse_mode="Markdown"
     )
+
+@bot.message_handler(func=lambda m: m.text == '📄 Инфо')
+def info(message):
+    bot.send_message(
+        message.chat.id,
+        '🤖 FilmAI - Новейший бот-эксперт в сфере Киноиндустрии! \n\n'
+        ' -----------------Техническая Информация----------------- \n'
+        ' - Версия бота: 0.3 \n'
+        ' - Гит-репозиторий: https://github.com/DimaV11/FilmAI/ \n'
+        ' - Нейросеть: GigaChat 2\n'
+        ' - Авторы: @sirdezzan , @d42521 \n'
+        ' ------------------------------------------------------------------------'
+        )
 
 @bot.message_handler(func=lambda m: m.text == '🔎 Поиск')
 def start_search(message):
